@@ -290,9 +290,9 @@ class Juliabrot :
         self._colorize = overlay.juliabrot_colorize
         # Turn on iter stream output and set modes, this will go away in the future (if I have the time),
         #  these settings will then come from the streaming config instead 1 per requested grid
-        self._colorize.write(self._colorize.register_map.inStreamEnables.address, 0x1)
-        self._colorize.write(self._colorize.register_map.inMaxIter.address, 1000)
-        self._colorize.write(self._colorize.register_map.inMode.address, 0x0)
+        self._colorize.write(self._colorize.register_map.inStreamEnables_V.address, 0x1)
+        self._colorize.write(self._colorize.register_map.inMaxIter_V.address, 1000)
+        self._colorize.write(self._colorize.register_map.inMode_V.address, 0x0)
         
     def _config(self, in_tile, pktSize=-1) :
         '''
@@ -384,19 +384,19 @@ class Juliabrot :
         print(self._read_nrow())
     
     def _read_xMax(self) :
-        return self._jb.read(self._jb.register_map.xMaxOut.address)
+        return self._jb.read(self._jb.register_map.xMaxOut_V.address)
     
     def _read_yMax(self) :
-        return self._jb.read(self._jb.register_map.yMaxOut.address)
+        return self._jb.read(self._jb.register_map.yMaxOut_V.address)
     
     def _read_nrow(self) :
-        return self._jb.read(self._jb.register_map.nRowOut.address)
+        return self._jb.read(self._jb.register_map.nRowOut_V.address)
     
     def _read_ncol(self) :
-        return self._jb.read(self._jb.register_map.nColOut.address)
+        return self._jb.read(self._jb.register_map.nColOut_V.address)
     
     def _read_N(self) :
-        return self._jb.read(self._jb.register_map.nkOut.address)
+        return self._jb.read(self._jb.register_map.nkOut_V.address)
     
     def _longdouble_to_int32_quad(self, x) :
         b = np.longdouble(x).tobytes()
